@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Todo List: </h1>
-    <ul class="todoItems">
-    <% for(let i=0; i < items.length; i++) {%>
-        <li class="item">
-            <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
-            <% }else{ %>
-                <span><%= items[i].thing %></span>
-            <% } %>    
-            <span class='fa fa-trash'></span>
-        </li>
-    <% } %>
-    </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo App</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
 
-    <h2>Left to do: <%= left %></h2>
+    <body> <!--Displays main content-->
+        <h1>Todo List: </h1> <!--Main title of page-->
+        <ul class="todoItems">  <!--Renders an unordered list with a class of todoItems-->
+        <% for(let i=0; i < items.length; i++) {%> <!--Uses EJS to start a JS for loop-->
+            <li class="item"> <!--Creates a list item with the class of item-->
+                <% if(items[i].completed === true) {%> <!--Use EJS to check if the completed property of the item element in the array is true-->
+                    <span class='completed'><%= items[i].thing %></span> <!--Renders an inline span element with the class of completed if the completed object is true, that uses the thing property of the item element-->
+                <% }else{ %> <!--If completed is not true, do this instead-->
+                    <span><%= items[i].thing %></span> <!--Renders this span element instead, without a class, if completed property is false-->
+                <% } %> <!--ends else statement clause-->
+                <span class='fa fa-trash'></span> <!--renders trash can symbol-->
+            </li> <!--Closes li-->
+        <% } %> <!--Ending the for loop statement-->
+        </ul> <!--Ends ul element-->
 
-    <h2>Add A Todo:</h2>
+        <h2>Left to do: <%= left %></h2> <!--Use EJS to render left variable which displays the number of documents with the class of false-->
 
-    <form action="/addTodo" method="POST">
-        <input type="text" placeholder="Thing To Do" name="todoItem">
-        <input type="submit">
-    </form>
-    
+        <h2>Add A Todo:</h2> <!--Creates a second level header-->
 
-    <script src='js/main.js'></script>
-</body>
+        <form action="/addTodo" method="POST"> <!--Creates a form with the post method that routes to addToDo -->
+            <input type="text" placeholder="Thing To Do" name="todoItem"> <!--creates an input box that accepts text with a placeholder of Thing To do. input name is given a name for reference later-->
+            <input type="submit"> <!--renders a submit button-->
+        </form> <!--Ends form element-->
+        
+
+        <script src='js/main.js'></script> <!--Links JS file-->
+    </body>
 </html>
